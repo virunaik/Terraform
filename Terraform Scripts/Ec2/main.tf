@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "myinstance" {
-    ami = "ami-0b6c6ebed2801a5cb"
+    ami = "ami-019715e0d74f695be"
     instance_type = "t3.micro"
     security_groups = [aws_security_group.myvirusg.id]
 
