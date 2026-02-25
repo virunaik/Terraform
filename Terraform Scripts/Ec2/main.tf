@@ -7,6 +7,10 @@ resource "aws_instance" "myinstance" {
     ami = "ami-0b6c6ebed2801a5cb"
     instance_type = "t3.micro"
     security_groups = [aws_security_group.myvirusg.id]
+
+    tags = {
+        Name = "viraj-ec2"
+    }
 }
 
 resource "aws_security_group" "myvirusg" {
