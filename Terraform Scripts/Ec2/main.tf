@@ -3,15 +3,6 @@ provider "aws" {
   
 }
 
-resource "aws_instance" "myinstance" {
-    ami = "ami-019715e0d74f695be"
-    instance_type = "t3.micro"
-    security_groups = [aws_security_group.myvirusg.id]
-
-    tags = {
-        Name = "viraj-ec2"
-    }
-}
 
 resource "aws_security_group" "myvirusg" {
     name = "http-allow"
@@ -37,4 +28,14 @@ resource "aws_security_group" "myvirusg" {
         cidr_blocks = ["0.0.0.0/0"]
     }
   
+}
+
+resource "aws_instance" "myinstance" {
+    ami = "ami-019715e0d74f695be"
+    instance_type = "t3.micro"
+    vpc_security_group_ids = [aws_security_group.myvirusg.id]
+
+    tags = {
+        Name = "viraj-ec2"
+    }
 }
